@@ -1,0 +1,19 @@
+{
+  "name": "vite",
+  "version": "0.0.0",
+  "scripts": {
+    "serve-lambda": "SECRET=42 netlify-lambda serve /app/lambda",
+    "serve-vite": "vite",
+    "dev": "netlify-lambda serve /app/lambda & vite",
+    "build": "vite build & netlify-lambda build /app/lambda",
+    "serve": "SECRET=42 netlify-lambda serve /app/lambda & vite"
+  },
+  "devDependencies": {
+    "vite": "^3.0.4"
+  },
+  "dependencies": {
+    "glob-parent": "^6.0.2",
+    "netlify-lambda": "^2.0.15",
+    "request": "^2.88.2"
+  }
+}
