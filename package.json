@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "glob-parent": "^6.0.2",
+    "netlify": "^13.1.0",
     "netlify-lambda": "^2.0.15",
     "request": "^2.88.2"
   }

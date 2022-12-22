@@ -105,12 +105,13 @@ function setupDrawingButtons(canvas, ctx, element) {
 
         let img = new Img(image, word, 0, 0, 0)
         addToServerData.push(img)
-
-        let link = document.getElementById("link");
+        let link
+        /*
+        link = document.getElementById("link");
         link.setAttribute("download", "CanvasImage.png");
         link.setAttribute("href", image.replace("image/png", "image/octet-stream")); //saves it to local PC.
         link.click();
-
+        */
         link = document.getElementById("link");
         link.removeAttribute("download")
         link.setAttribute("href", "./.netlify/functions/setImages"); //Save it to the server
