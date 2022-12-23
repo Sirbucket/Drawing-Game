@@ -104,7 +104,7 @@ function setupDrawingButtons(canvas, ctx, element) {
         const image = canvas.canvas.toDataURL("image/png")
 
         let img = new Img(image, word, 0, 0, 0)
-        addToServerData.push(img)
+
         let link
         /*
         link = document.getElementById("link");
@@ -114,7 +114,7 @@ function setupDrawingButtons(canvas, ctx, element) {
         */
         link = document.getElementById("link");
         link.removeAttribute("download");
-        link.setAttribute("href", "./.netlify/functions/setImages"); //Save it to the server
+        link.setAttribute("href", `./.netlify/functions/setImages?image=${img.imageUrl}&name=${img.name}&likes=${img.likes}&dislikes=${img.dislikes}&reports=${img.reports}`); //Save it to the server
         link.click();
 
         returnToMainPage(element, canvas, wordList, dbuttonList)
