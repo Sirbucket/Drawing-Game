@@ -1,7 +1,7 @@
 export const handler = function (event, context, callback) {
     let parameters = event.queryStringParameters;
     let secret = process.env.SECRET;
-    let number = Number(parameters.number);
+    let number: number = Number(parameters.number);
     callback(null, {
       statusCode: 200,
       body: JSON.stringify({

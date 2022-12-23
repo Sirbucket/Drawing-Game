@@ -1,7 +1,11 @@
 export class Container {
+    clone: Node
+    cloneContent: HTMLElement
+    content: HTMLElement 
+    oldHTML: string
     constructor(list) {
-        let itemTemplate = document.querySelector("#controls");
-        const length = list.length;
+        let itemTemplate: HTMLTemplateElement = document.querySelector("#controls");
+        const length: number = list.length;
         this.clone = itemTemplate.cloneNode(true);
         this.cloneContent = this.clone.content.querySelector(".controls");
         for (let i = 0; i < length; ++i) {

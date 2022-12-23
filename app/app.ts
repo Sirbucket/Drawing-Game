@@ -6,31 +6,31 @@ const buttonList = [];
 const containerList = [];
 export const addToServerData = [];
 
-const app = document.querySelector("#app");
-let fm = false;
-const utils = new Utils();
+const app: HTMLElement = document.querySelector("#app");
+let fm: boolean = false;
+const utils: Utils = new Utils();
 
 function setupMainPage() {
-    for (let i = 0; i < containerList.length; ++i) {
+    for (let i: number = 0; i < containerList.length; ++i) {
         app.appendChild(containerList[i].cloneContent);
     }
 }
 
-function returnToMainPage(element, canvas, wordList, dbuttonList) {
+function returnToMainPage(element: HTMLElement, canvas, wordList: string[], dbuttonList) {
     element.removeChild(canvas.element);
-    for (let i = 0; i < wordList.length; ++i) {
+    for (let i: number = 0; i < wordList.length; ++i) {
         element.removeChild(wordList[i].element);
     }
 
     setupMainPage();
 
-    for (let i = 0; i < dbuttonList.length; ++i) {
+    for (let i: number = 0; i < dbuttonList.length; ++i) {
         element.removeChild(dbuttonList[i].cloneContent);
     }
 }
 
 //Make canvas for drawing on.
-function makeNewDrawingCanvas(w, h, color, bgcolor) {
+function makeNewDrawingCanvas(w: string, h: string, color: string, bgcolor: string) {
     let canvas = utils.newCanvas(w, h);
     canvas.canvas.style.backgroundColor = bgcolor;
     canvas.canvas.style.justifyContent = "auto";
@@ -59,26 +59,26 @@ function makeNewDrawingCanvas(w, h, color, bgcolor) {
 }
 
 //Sets up the drawing section of the code.
-function setupDrawingButtons(canvas, ctx, element) {
+function setupDrawingButtons(canvas, ctx: CanvasRenderingContext2D, element: HTMLElement) {
     const capButtons = [];
     const colorButtons = [];
     const connectButtons = [];
     const extraButtons = [];
-    const wordList = [];
+    const wordList: string[] = [];
     const dbuttonList = [];
 
-    for (let i = 0; i < caps.length; ++i) {
+    for (let i: number = 0; i < caps.length; ++i) {
         utils.newButton(caps[i], capButtons).onClick(() => ctx.lineCap = caps[i]);
     }
 
-    for (let i = 0; i < colors.length; ++i) {
+    for (let i: number = 0; i < colors.length; ++i) {
         utils.newButton(colors[i], colorButtons).onClick(() => {
             ctx.strokeStyle = colors[i];
             ctx.fillStyle = colors[i];
         });
     }
 
-    for (let i = 0; i < connections.length; ++i) {
+    for (let i: number = 0; i < connections.length; ++i) {
         utils.newButton(connections[i], connectButtons).onClick(() => ctx.lineJoin = connections[i]);
     }
     
@@ -98,21 +98,20 @@ function setupDrawingButtons(canvas, ctx, element) {
         ctx.clearRect(0, 0, canvas.canvas.width, canvas.canvas.height);
     });
 
-    let word = wordArray[~~(Math.random() * wordArray.length)]
+    let word: string = wordArray[~~(Math.random() * wordArray.length)]
 
     utils.newButton("Save", extraButtons).onClick(() => {
-        const image = canvas.canvas.toDataURL("image/png")
+        const image: ImageData = canvas.canvas.toDataURL("image/png")
 
         let img = new Img(image, word, 0, 0, 0)
         addToServerData.push(img)
-        let link
         /*
-        link = document.getElementById("link");
+        let link = document.getElementById("link");
         link.setAttribute("download", "CanvasImage.png");
         link.setAttribute("href", image.replace("image/png", "image/octet-stream")); //saves it to local PC.
         link.click();
         */
-        link = document.getElementById("link");
+        let link: HTMLElement = document.getElementById("link");
         link.removeAttribute("download");
         link.setAttribute("href", "./.netlify/functions/setImages"); //Save it to the server
         link.click();
@@ -127,23 +126,23 @@ function setupDrawingButtons(canvas, ctx, element) {
 
     utils.newElement("namedisplay", word, wordList);
 
-    for (let i = 0; i < wordList.length; ++i) {
+    for (let i: number = 0; i < wordList.length; ++i) {
         element.appendChild(wordList[i].element);
     }
 
-    for (let i = 0; i < dbuttonList.length; ++i) {
+    for (let i: number = 0; i < dbuttonList.length; ++i) {
         element.appendChild(dbuttonList[i].cloneContent);
     }
 }
 
-function mainPageButtons(element) {
+function mainPageButtons(element: HTMLElement) {
     utils.newButton("Draw", buttonList).onClick(() => {
-        for (let i = 0; i < containerList.length; ++i) {
+        for (let i: number = 0; i < containerList.length; ++i) {
             element.removeChild(containerList[i].cloneContent);
         }
 
         const canvas = makeNewDrawingCanvas("1280", "720", "black", "lightsteelblue");
-        const ctx = canvas.ctx;
+        const ctx: CanvasRenderingContext2D = canvas.ctx;
 
         setupDrawingButtons(canvas, ctx, app);
         element.appendChild(canvas.element);
@@ -159,7 +158,7 @@ function mainPageButtons(element) {
             return;
         }
         if (response) {
-            let json = await response.json();
+            let json: JSON = await response.json();
             console.log(json);
         } else {
             console.log("Blank");

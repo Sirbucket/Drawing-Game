@@ -1,8 +1,9 @@
 
 export class Element {
-    name = 'div';
+    name: string = 'div';
+    element: HTMLElement
     callbacks = [];
-    constructor(name, displayname) {
+    constructor(name: string, displayname: string) {
         this.element = document.createElement(this.name);
         this.element.innerHTML = `
             <label>

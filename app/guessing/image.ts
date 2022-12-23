@@ -1,18 +1,18 @@
 export class Image {
-    element
-    image
+    element: HTMLElement
+    image: HTMLImageElement
     callbacks = []
-    constructor(imageName) {
+    constructor(imageName: string) {
         this.element.innerHTML = `
             <label>
-                <img class = "image" src = ${this.imageName}>
+                <img class = "image" src = ${imageName}>
             </label>
         `;
         this.image = this.element.querySelector(".image");
-        const image = this.image;
+        const image: HTMLImageElement = this.image;
         image.addEventListener("click", () => {
-            const len = this.callbacks.length;
-            for(let i = 0; i<len; ++i) {
+            const len: number = this.callbacks.length;
+            for(let i: number = 0; i<len; ++i) {
                 const c = this.callbacks[i];
                 c();
             }

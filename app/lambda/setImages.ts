@@ -3,7 +3,7 @@ import {addToServerData} from '../app'
 
 export const handler = function(event, context, callback) { //I don't understand how to put things in the database, wait for Mr. Hinkle to be available
     let key = process.env.RESTDB_KEY
-    for (let i = addToServerData.length; i > 0; --i) { //Iterate backwards to ensure .pop works properly
+    for (let i: number = addToServerData.length; i > 0; --i) { //Iterate backwards to ensure .pop works properly
         let options = {
             method: 'POST',
             url: 'https://drawinggame-0a58.restdb.io/rest/images',
