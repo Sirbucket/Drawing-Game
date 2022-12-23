@@ -113,7 +113,7 @@ function setupDrawingButtons(canvas, ctx, element) {
         link.click();
         */
         link = document.getElementById("link");
-        link.removeAttribute("download")
+        link.removeAttribute("download");
         link.setAttribute("href", "./.netlify/functions/setImages"); //Save it to the server
         link.click();
 
@@ -125,7 +125,7 @@ function setupDrawingButtons(canvas, ctx, element) {
     utils.newContainer(connectButtons, dbuttonList);
     utils.newContainer(extraButtons, dbuttonList);
 
-    utils.newElement("namedisplay", word, wordList)
+    utils.newElement("namedisplay", word, wordList);
 
     for (let i = 0; i < wordList.length; ++i) {
         element.appendChild(wordList[i].element);

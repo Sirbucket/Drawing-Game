@@ -1,5 +1,5 @@
 import request from 'request'
-import {addToServerData} from '../app.js'
+import {addToServerData} from '../app'
 
 export const handler = function(event, context, callback) {
     let key = process.env.RESTDB_KEY
