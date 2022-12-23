@@ -4,7 +4,6 @@ import {Img, wordArray} from './processing/processinput';
 
 const buttonList = [];
 const containerList = [];
-export const addToServerData = [];
 
 const app = document.querySelector("#app");
 let fm = false;
@@ -58,6 +57,23 @@ function makeNewDrawingCanvas(w, h, color, bgcolor) {
     return canvas;
 }
 
+function getServerData() {
+    let link = document.getElementById("link");
+        link.removeAttribute("download");
+        link.removeAttribute("href")
+        link.setAttribute("href", `./.netlify/functions/getImages`); //Save it to the server
+        link.click();
+    return link
+}
+
+function setServerData(image, name, likes, dislikes, reports) {
+    let link = document.getElementById("link");
+        link.removeAttribute("download");
+        link.removeAttribute("href")
+        link.setAttribute("href", `./.netlify/functions/setImages?image=${image}&name=${name}&likes=${likes}&dislikes=${dislikes}&reports=${reports}`); //Save it to the server
+        link.click();
+    return link
+}
 //Sets up the drawing section of the code.
 function setupDrawingButtons(canvas, ctx, element) {
     const capButtons = [];
@@ -105,17 +121,13 @@ function setupDrawingButtons(canvas, ctx, element) {
 
         let img = new Img(image, word, 0, 0, 0)
 
-        let link
         /*
-        link = document.getElementById("link");
+        let link = document.getElementById("link");
         link.setAttribute("download", "CanvasImage.png");
         link.setAttribute("href", image.replace("image/png", "image/octet-stream")); //saves it to local PC.
         link.click();
         */
-        link = document.getElementById("link");
-        link.removeAttribute("download");
-        link.setAttribute("href", `./.netlify/functions/setImages?image=${img.imageUrl}&name=${img.name}&likes=${img.likes}&dislikes=${img.dislikes}&reports=${img.reports}`); //Save it to the server
-        link.click();
+        setServerData(img.imageUrl, img.name, img.likes, img.dislikes, img.reports)
 
         returnToMainPage(element, canvas, wordList, dbuttonList)
     });

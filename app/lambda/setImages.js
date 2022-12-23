@@ -1,15 +1,13 @@
 import request from 'request'
-import {addToServerData} from '../app'
-//WHERE AM I CALLING DOCUMENT!!!!??????????
 export const handler = function(event, context, callback) { //I don't understand how to put things in the database, wait for Mr. Hinkle to be available.
     let key = process.env.RESTDB_KEY
+    
     let parameters = event.queryStringParameters
     let image = parameters.image
     let name = parameters.name
     let likes = parameters.likes
     let dislikes = parameters.dislikes
     let reports = parameters.reports
-    
     
     let options = {
         method: 'POST',
