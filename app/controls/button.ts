@@ -1,10 +1,8 @@
 
 export class Button {
-    element: HTMLElement
-    button: HTMLButtonElement
-    name: string = 'div';
+    name = 'div';
     callbacks = [];
-    constructor(html: string) {
+    constructor(html) {
         this.element = document.createElement(this.name);
         this.element.innerHTML = `
             <label>

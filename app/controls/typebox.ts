@@ -1,9 +1,7 @@
 export class Typebox {
-    name: string = 'div';
-    element: HTMLElement
-    typebox: HTMLInputElement
+    name = 'div';
     callbacks = [];
-    constructor(html: string) {
+    constructor(html) {
         this.element = document.createElement(this.name);
         this.element.innerHTML = `
             <label>

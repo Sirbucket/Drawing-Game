@@ -1,17 +1,17 @@
 export {Canvas} from './canvas'
 
-export const caps: string[] = [
+export const caps = [
 	"round",
 	"square",
 ];
 
-export const connections: string[] = [
+export const connections = [
 	"bevel",
 	"round",
 	"miter",
 ];
 
-export const colors: string[] = [
+export const colors = [
 	"Red",
 	"Blue",
 	"Green",
