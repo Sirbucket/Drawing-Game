@@ -12,7 +12,7 @@ export class Image {
         const image: HTMLImageElement = this.image;
         image.addEventListener("click", () => {
             const len: number = this.callbacks.length;
-            for(let i: number = 0; i<len; ++i) {
+            for (let i: number = 0; i < len; ++i) {
                 const c = this.callbacks[i];
                 c();
             }

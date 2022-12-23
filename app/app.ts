@@ -1,12 +1,12 @@
 import { Utils } from './util';
-import {caps, colors, connections} from './drawing';
-import {Img, wordArray} from './processing/processinput';
+import { caps, colors, connections } from './drawing';
+import { Img, wordArray } from './processing/processinput';
 
 const buttonList = [];
 const containerList = [];
 export const addToServerData = [];
 
-const app: HTMLElement = document.querySelector("#app");
+const app = document.querySelector("#app");
 let fm: boolean = false;
 const utils: Utils = new Utils();
 
@@ -81,7 +81,7 @@ function setupDrawingButtons(canvas, ctx: CanvasRenderingContext2D, element: HTM
     for (let i: number = 0; i < connections.length; ++i) {
         utils.newButton(connections[i], connectButtons).onClick(() => ctx.lineJoin = connections[i]);
     }
-    
+
     utils.newButton("Back", extraButtons).onClick(() => {
         returnToMainPage(element, canvas, wordList, dbuttonList)
     });

@@ -1,7 +1,7 @@
 export class Container {
     clone: Node
     cloneContent: HTMLElement
-    content: HTMLElement 
+    content: HTMLElement
     oldHTML: string
     constructor(list) {
         let itemTemplate: HTMLTemplateElement = document.querySelector("#controls");

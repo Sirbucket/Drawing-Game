@@ -8,10 +8,10 @@ export class Img {
     name: string
 
     constructor(imageUrl: ImageData, name: string, likes?: number, dislikes?: number, reports?: number) { //Technically optional
-        this.imageUrl = imageUrl; 
+        this.imageUrl = imageUrl;
         this.name = name
 
-        if (likes) {     
+        if (likes) {
             this.likes = likes
         }
         if (dislikes) {
