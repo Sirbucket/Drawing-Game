@@ -1,6 +1,6 @@
 import request from 'request'
 import {addToServerData} from '../app'
-
+//WHERE AM I CALLING DOCUMENT!!!!??????????
 export const handler = function(event, context, callback) { //I don't understand how to put things in the database, wait for Mr. Hinkle to be available
     let key = process.env.RESTDB_KEY
     for (let i = addToServerData.length; i > 0; --i) { //Iterate backwards to ensure .pop works properly
