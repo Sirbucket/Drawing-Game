@@ -8,7 +8,7 @@ export const handler = function(event, context, callback) { //Stuff is not sendi
     
     let options = {
         method: 'POST',
-        url: 'https://drawinggame-0a58.restdb.io/rest/images',
+        url: 'https://drawinggame-0a58.restdb.io/rest/words',
         headers: {'cache-control': 'no-cache', 'x-apikey': key, 'content-type': 'application/json'}, //Create json
         body: {
             name: name, //Name of image

@@ -4,7 +4,7 @@ export const handler = function(event, context, callback) {
     let key = process.env.RESTDB_KEY
     let options = {
         method: 'GET',
-        url: 'https://drawinggame-0a58.restdb.io/rest/images',
+        url: 'https://drawinggame-0a58.restdb.io/rest/words',
         headers: {'cache-control': 'no-cache', 'x-apikey': key}
     };
 
