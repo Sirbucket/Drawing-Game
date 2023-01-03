@@ -57,7 +57,7 @@ function makeNewDrawingCanvas(w, h, color, bgcolor) {
 	return canvas;
 }
 
-async function setServerData(name : string, reports : number) {
+async function setServerData(name, reports) {
 	try {
 		var response = await fetch(`./.netlify/functions/setImages?name=${name}&reports=${reports}`)
 	} catch (err) {

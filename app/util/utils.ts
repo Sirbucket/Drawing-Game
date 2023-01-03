@@ -5,21 +5,21 @@ import {Button, Typebox, Container, Element} from "../controls"
 export class Utils {
     constructor() {}
     
-    newButton(name : string, list) {
-        const button : Button = new Button(name)
+    newButton(name, list) {
+        const button = new Button(name)
     
         list.push(button)
         return button
     }
 
-    newImage(src : Blob, list) {
+    newImage(src, list) {
         const image = new Image(src)
     
         list.push(image)
         return image
     }
 
-    newTypebox(name : string, list) {
+    newTypebox(name, list) {
         const typebox = new Typebox(name)
     
         list.push(typebox)
@@ -33,13 +33,13 @@ export class Utils {
         return container
     }
 
-    newCanvas(w : string, h : string) {
+    newCanvas(w, h) {
         const canvas = new Canvas(w, h)
 
         return canvas
     }
 
-    newElement(name : string, displayname : string, list) {
+    newElement(name, displayname, list) {
         const element = new Element(name, displayname)
 
         list.push(element)
