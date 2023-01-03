@@ -1,4 +1,4 @@
-export const wordArray = [] //Game words get stored here
+export const wordArray = ["I am here to keep this from breaking"] //Game words get stored here
 export const filteredWords = ["|", "@", "%", "^", "&", "*", "+", "_", "=", "[", "{", "}", "]", "<", ">", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"] //Add hard swears after school lmao.
 export class Img {
     reports
