@@ -65,7 +65,7 @@ async function setServerData(name, reports) {
 		return;
 	}
 	if (response) {
-		let json = await response.json();
+		let json = await fetch(`./.netlify/functions/getImages`)
 		console.log(json);
 	} else {
 		console.log("Blank");
