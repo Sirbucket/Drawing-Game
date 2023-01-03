@@ -1,39 +1,42 @@
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: red;
-  margin-top: 60px;
+	font-family: Avenir, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	color: red;
+	margin-top: 60px;
 }
 
 .namedisplay {
-  background-color : lightsteelblue;
-  color : black;
-  width : 20%;
-  margin-left : 40%;
-  border-radius: 8px;
-  font-size : 24px;
+	background-color : lightsteelblue;
+	color : black;
+	width : 20%;
+	border-radius: 8px;
+	font-size : 24px;
+	position: absolute;
+	top: 2%;
+	left: 40%;
 }
 
 .controls {
-  margin-top: 2%;
-  background-color: lightsteelblue;
-  width: 5%;
-  margin-left: 2%;
-  border-radius: 16px;
-  padding: 4px;
-  font-size: 100%;
+	margin-top: 2%;
+	background-color: lightsteelblue;
+	width: 5%;
+	margin-left: 2%;
+	border-radius: 16px;
+	padding: 4px;
+	font-size: 100%;
 }
 
 .button {
-  background-color: white;
-  border-color: steelblue;
-  border-radius: 16px;
+	background-color: white;
+	border-color: steelblue;
+	border-radius: 16px;
+	
 }
 
 canvas {
-  position : absolute;
-  left : 15%;
-  top : 10%;
+	position : absolute;
+	left : 15%;
+	top : 15%;
 }
