@@ -17,13 +17,13 @@ function setupMainPage() {
 
 function returnToMainPage(element, canvas, wordList, dbuttonList) {
 	element.removeChild(canvas.element);
-	for (let i = 0; i < wordList.length; ++i) {
+	for (let i = wordList.length; i >= 0; --i) {
 		element.removeChild(wordList[i].element);
 	}
 
 	setupMainPage();
 
-	for (let i = 0; i < dbuttonList.length; ++i) {
+	for (let i = dbuttonList.length; i >= 0; --i) {
 		element.removeChild(dbuttonList[i].cloneContent);
 	}
 }
@@ -57,7 +57,7 @@ function makeNewDrawingCanvas(w, h, color, bgcolor) {
 	return canvas;
 }
 
-async function setServerData(name, reports) {
+async function setServerData(name : string, reports : number) {
 	try {
 		var response = await fetch(`./.netlify/functions/setImages?name=${name}&reports=${reports}`)
 	} catch (err) {
@@ -65,8 +65,9 @@ async function setServerData(name, reports) {
 		return;
 	}
 	if (response) {
-		let json = await fetch(`./.netlify/functions/getImages`)
+		let json = await fetch(`./.netlify/functions/getImages`) //Ensures we see the data (print will go later)
 		console.log(json);
+		return json
 	} else {
 		console.log("Blank");
 	}
@@ -149,7 +150,7 @@ function setupDrawingButtons(canvas, ctx, element) {
 
 function mainPageButtons(element) {
 	utils.newButton("Draw", buttonList).onClick(() => {
-		for (let i = 0; i < containerList.length; ++i) {
+		for (let i = containerList.length; i >= 0; --i) {
 			element.removeChild(containerList[i].cloneContent);
 		}
 
