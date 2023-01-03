@@ -17,13 +17,13 @@ function setupMainPage() {
 
 function returnToMainPage(element, canvas, wordList, dbuttonList) {
 	element.removeChild(canvas.element);
-	for (let i = wordList.length; i >= 0; --i) {
+	for (let i = 0; i < wordList.length; ++i) {
 		element.removeChild(wordList[i].element);
 	}
 
 	setupMainPage();
 
-	for (let i = dbuttonList.length; i >= 0; --i) {
+	for (let i = 0; i < dbuttonList.length; ++i) {
 		element.removeChild(dbuttonList[i].cloneContent);
 	}
 }
@@ -65,9 +65,8 @@ async function setServerData(name, reports) {
 		return;
 	}
 	if (response) {
-		let json = await fetch(`./.netlify/functions/getImages`) //Ensures we see the data (print will go later)
+		let json = await fetch(`./.netlify/functions/getImages`)
 		console.log(json);
-		return json
 	} else {
 		console.log("Blank");
 	}
@@ -150,7 +149,7 @@ function setupDrawingButtons(canvas, ctx, element) {
 
 function mainPageButtons(element) {
 	utils.newButton("Draw", buttonList).onClick(() => {
-		for (let i = containerList.length; i >= 0; --i) {
+		for (let i = 0; i < containerList.length; ++i) {
 			element.removeChild(containerList[i].cloneContent);
 		}
 
