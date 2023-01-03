@@ -1,6 +1,6 @@
 import { Utils } from './util';
 import { caps, colors, connections } from './drawing';
-import { Img, wordArray } from './processing/processinput';
+import { Img, wordArray, filterWord } from './processing/processinput';
 
 const buttonList = [];
 const containerList = [];
