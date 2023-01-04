@@ -13,7 +13,7 @@ export class Img {
 }
 
 export function filterWord(word) {
-	let lword = word.toLowerCase.trimStart().trimEnd()
+	let lword = word.toLowerCase().trimStart().trimEnd()
 	if (lword == "") return console.log("This is blank.");
 	if (lword.length > 45) return false && console.log("This word is too long!") //Longest realistic to be used word in the world is 45 letters.
 

@@ -15,16 +15,20 @@ function setupMainPage() {
 	}
 }
 
-function returnToMainPage(element, canvas, wordList, dbuttonList) {
-	element.removeChild(canvas.element);
-	for (let i = 0; i < wordList.length; ++i) {
-		element.removeChild(wordList[i].element);
+function returnToMainPage(element, canvas?, wordList?, dbuttonList?) {
+	if (canvas) element.removeChild(canvas.element);
+	if (wordList) {
+		for (let i = 0; i < wordList.length; ++i) {
+			element.removeChild(wordList[i].element);
+		}
 	}
-
+	
 	setupMainPage();
 
-	for (let i = 0; i < dbuttonList.length; ++i) {
-		element.removeChild(dbuttonList[i].cloneContent);
+	if (dbuttonList) {
+		for (let i = 0; i < dbuttonList.length; ++i) {
+			element.removeChild(dbuttonList[i].cloneContent);
+		}
 	}
 }
 
@@ -147,7 +151,47 @@ function setupDrawingButtons(canvas, ctx, element) {
 	}
 }
 
+function createGuessingGame(element) {
+	const extraButtons = [];
+	const typeBoxes = [];
+	const dbuttonList = [];
+
+	for (let i = 0; i < containerList.length; ++i) {
+		element.removeChild(containerList[i].cloneContent);
+	}
+
+	utils.newButton("Back", extraButtons).onClick(() => {
+		returnToMainPage(element, false, false, dbuttonList)
+	});
+	utils.newButton("Test Get", extraButtons).onClick(async () => {
+		let response = await fetch(`./netlify/functions/getImages`)	
+		console.log(response)
+	});
+	
+	
+	let filteredInput
+	utils.newTypebox("Word", typeBoxes).onInput(async (input) => {
+		filteredInput = filterWord(input.toString())
+		if (!filteredInput) filteredInput = false
+	})
+	utils.newButton("Set", extraButtons).onClick(async () => {
+		if (filteredInput == false) return console.log("This ");
+		let response = await fetch(`./netlify/functions/setImages?name=${filteredInput}`)
+	})
+	utils.newContainer(extraButtons, dbuttonList);
+	for (let i = 0; i < dbuttonList.length; ++i) {
+		element.appendChild(dbuttonList[i].cloneContent);
+	}
+	for (let i = 0; i < typeBoxes.length; ++i) {
+		element.appendChild(typeBoxes[i].element)
+	}
+}
+
 function mainPageButtons(element) {
+	utils.newButton("Test", buttonList).onClick(async () => {
+		let response = await testSendData("Name", 0)
+		console.log(response)
+	});
 	utils.newButton("Draw", buttonList).onClick(() => {
 		for (let i = 0; i < containerList.length; ++i) {
 			element.removeChild(containerList[i].cloneContent);
@@ -161,15 +205,7 @@ function mainPageButtons(element) {
 	});
 
 	utils.newButton("Guess", buttonList).onClick(async () => {
-		console.log('Clicked button, go fetch...');
-
-		try {
-			var response = await testSendData("datatest", 0)
-		} catch (err) {
-			console.log(`${err}`);
-			return;
-		}
-		return response
+		createGuessingGame(element)
 	});
 	utils.newContainer(buttonList, containerList);
 }
