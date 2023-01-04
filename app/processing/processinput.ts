@@ -1,5 +1,5 @@
 export const wordArray = ["I am here to keep this from breaking"] //Game words get stored here
-export const filteredWords = ["|", "@", "%", "^", "&", "*", "+", "_", "=", "[", "{", "}", "]", "<", ">", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"] //Add hard swears after school lmao.
+export const filteredWords = [/\bn[ie][gb][gber]\b/gi, /\bsh[iea][t]\b/gi,] //Add hard swears after school lmao.
 export class Img {
     reports
     name
@@ -18,7 +18,7 @@ export function filterWord(word) {
 	if (lword.length > 45) return false && console.log("This word is too long!") //Longest realistic to be used word in the world is 45 letters.
 
 	for (let i = 0; i < filteredWords.length; ++i) {
-		if (lword.search(`${filteredWords[i]}`) == true) {
+		if (lword.match(`${filteredWords[i]}`) == true) {
 			return false && console.log("This word was not added to the list. It was filtered out.");
 		}
 	}

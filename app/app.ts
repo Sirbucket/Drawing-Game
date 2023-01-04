@@ -170,14 +170,14 @@ function createGuessingGame(element) {
 	
 	
 	let filteredInput
-	utils.newTypebox("Word", typeBoxes).onInput(async (input) => {
-		filteredInput = filterWord(input.toString())
+	utils.newTypebox("Word", typeBoxes).onInput(async (string) => {
+		filteredInput = filterWord(string)
 		if (!filteredInput) filteredInput = false
-	})
+	});
 	utils.newButton("Set", extraButtons).onClick(async () => {
 		if (filteredInput == false) return console.log("This ");
-		let response = await fetch(`./netlify/functions/setImages?name=${filteredInput}`)
-	})
+		let response = await fetch(`./netlify/functions/setImages?name=${filteredInput}&reports=${0}`)
+	});
 	utils.newContainer(extraButtons, dbuttonList);
 	for (let i = 0; i < dbuttonList.length; ++i) {
 		element.appendChild(dbuttonList[i].cloneContent);

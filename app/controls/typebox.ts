@@ -1,4 +1,6 @@
 export class Typebox {
+	element : HTMLElement
+	typebox : HTMLInputElement
     name = 'div';
     callbacks = [];
     constructor(html) {
@@ -14,7 +16,7 @@ export class Typebox {
         const typebox = this.typebox
         typebox.addEventListener("input", () => {
             for (let c of this.callbacks) {
-                c()
+                c(this.typebox.value)
             }
         });
     }
