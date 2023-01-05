@@ -1,5 +1,5 @@
 export const wordArray = ["I am here to keep this from breaking"] //Game words get stored here
-export const filteredWords = [/n[ie][gb][gbaer]/gi, /sh[iea][t]/gi, /b[i][t]ch/gi, /wh[o][r][e]/gi, /c[u][n][t]/gi, /di[ck][ck]/gi, /fa[g][gio][tio][t]/gi, /fu[ck][ck]/gi, /ch[in][nkc][kc]/gi, /g[ou][ou][kc]/gi, /a[s][s][h][ol][le][e]/gi, /c[u][m]/] //Add hard swears after school lmao.
+export const filteredWords = [/\bn[ie][gb][gbaer]\b/gi, /\bsh[iea][t]\b/gi, /\bb[i][t]ch\b/gi, /\bwh[o][r][e]\b/gi, /\bc[u][n][t]\b/gi, /\bdi[ck][ck]\b/gi, /\bfa[g][gio][tio][t]\b/gi, /\bfu[ck][ck]\b/gi, /\b[ch][in][nkc][kc]\b/gi, /\bg[ou][ou][kc]\b/gi, /\ba[s][s][h][ol][le][e]\b/gi, /\bc[u][m]\b/] //Add hard swears after school lmao.
 export class Img {
     reports
     name
@@ -18,7 +18,7 @@ export function filterWord(word) {
 	if (lword.length > 45) return false && console.log("This word is too long!") //Longest realistic to be used word in the world is 45 letters.
 
 	for (let i = 0; i < filteredWords.length; ++i) {
-		if (lword.match(`${filteredWords[i]}`) == true) {
+		if (lword.match(`${filteredWords[i]}`)) {
 			return false && console.log("This word was not added to the list. It was filtered out.");
 		}
 	}

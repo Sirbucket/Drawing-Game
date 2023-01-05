@@ -172,11 +172,11 @@ function createGuessingGame(element) {
 	let filteredInput
 	utils.newTypebox("Word", typeBoxes).onInput(async (string) => {
 		filteredInput = filterWord(string)
-		if (!filteredInput) filteredInput = false
+		if (!filteredInput) filteredInput = null
 	});
 	utils.newButton("Set", extraButtons).onClick(async () => {
-		if (filteredInput == false) return console.log("This is a bad word");
-		let response = await fetch(`./netlify/functions/setImages?name=${filteredInput}&reports=${0}`)
+		if (!filteredInput) return console.log("This is a bad word");
+		let response = await testSendData(filteredInput, 0)
 		console.log(response)
 	});
 	utils.newContainer(extraButtons, dbuttonList);
@@ -205,7 +205,7 @@ function mainPageButtons(element) {
 		element.appendChild(canvas.element);
 	});
 
-	utils.newButton("Guess", buttonList).onClick(async () => {
+	utils.newButton("Guess", buttonList).onClick(() => {
 		createGuessingGame(element)
 	});
 	utils.newContainer(buttonList, containerList);
