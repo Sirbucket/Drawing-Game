@@ -175,8 +175,9 @@ function createGuessingGame(element) {
 		if (!filteredInput) filteredInput = false
 	});
 	utils.newButton("Set", extraButtons).onClick(async () => {
-		if (filteredInput == false) return console.log("This ");
+		if (filteredInput == false) return console.log("This is a bad word");
 		let response = await fetch(`./netlify/functions/setImages?name=${filteredInput}&reports=${0}`)
+		console.log(response)
 	});
 	utils.newContainer(extraButtons, dbuttonList);
 	for (let i = 0; i < dbuttonList.length; ++i) {

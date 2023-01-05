@@ -1,5 +1,5 @@
 export const wordArray = ["I am here to keep this from breaking"] //Game words get stored here
-export const filteredWords = [/\bn[ie][gb][gber]\b/gi, /\bsh[iea][t]\b/gi,] //Add hard swears after school lmao.
+export const filteredWords = [/n[ie][gb][gbaer]/gi, /sh[iea][t]/gi, /b[i][t]ch/gi, /wh[o][r][e]/gi, /c[u][n][t]/gi, /di[ck][ck]/gi, /fa[g][gio][tio][t]/gi, /fu[ck][ck]/gi, /ch[in][nkc][kc]/gi, /g[ou][ou][kc]/gi, /a[s][s][h][ol][le][e]/gi, /c[u][m]/] //Add hard swears after school lmao.
 export class Img {
     reports
     name
