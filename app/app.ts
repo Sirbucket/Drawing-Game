@@ -172,10 +172,9 @@ function createGuessingGame(element) {
 	let filteredInput
 	utils.newTypebox("Word", typeBoxes).onInput(async (string) => {
 		filteredInput = filterWord(string)
-		if (!filteredInput) filteredInput = null
 	});
 	utils.newButton("Set", extraButtons).onClick(async () => {
-		if (!filteredInput) return console.log("This is a bad word");
+		if (filteredInput == false) return console.log("This is a bad word");
 		let response = await testSendData(filteredInput, 0)
 		console.log(response)
 	});
