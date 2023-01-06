@@ -195,8 +195,8 @@ function createWordDisplay(element) {
 	const wordList = []
 	const extraButtons = []
 	const dbuttonList = []
-	
-	for (let i = 0; i < containerList.length; ++i) {
+	const wordContainer = []
+	for (let i = 0; i < containerList.length - 1; ++i) {
 		element.removeChild(containerList[i].cloneContent);
 	}
 
@@ -212,10 +212,8 @@ function createWordDisplay(element) {
 	for (let i = 0; i < wordArray.length - 1; ++i) {
 		utils.newElement("displayElement", wordArray[i], wordList)
 	}
-
-	for (let i = 0; i < wordList.length - 1; ++i) {
-		element.appendChild(wordList[i].element);
-	}
+	
+	utils.newContainer(wordList, wordContainer)
 }
 function mainPageButtons(element) {
 	utils.newButton("Draw", buttonList).onClick(() => {
