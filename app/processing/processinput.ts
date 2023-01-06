@@ -11,7 +11,7 @@ export async function pushServerToClient() {
 		return
 	}
 	
-	for (let i = 0; i < serverData.length - 1; ++i) {
+	for (let i = 0; i < serverData.length; ++i) {
 		wordArray[i] = serverData[i].name
 	}
 	wordArray.sort()
