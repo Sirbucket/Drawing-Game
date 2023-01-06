@@ -1,6 +1,6 @@
 import { Utils } from './util';
 import { caps, colors, connections } from './drawing';
-import {wordArray, filterWord } from './processing/processinput';
+import {wordArray, filterWord, pushServerToClient } from './processing/processinput';
 
 const buttonList = [];
 const containerList = [];
@@ -207,6 +207,6 @@ function mainPageButtons(element) {
 	});
 	utils.newContainer(buttonList, containerList);
 }
-
+pushServerToClient()
 mainPageButtons(app);
 setupMainPage();
