@@ -1,11 +1,11 @@
 import { getServerData, setServerData } from "../app";
 
 export const wordArray = [] //Game words get stored here
-export const reportArray = []
 
 export async function pushServerToClient() {
 	try {
 		var serverData = await getServerData()
+		
 	} catch (err) {
 		console.log(err)
 		return
@@ -13,11 +13,9 @@ export async function pushServerToClient() {
 
 	for (let i = wordArray.length - 1; i >= 0; --i) {
 		wordArray[i].pop()
-		reportArray[i].pop()
 	}
 	for (let i = serverData.body.length - 1; i >= 0; --i) {
 		wordArray[i] = serverData.body[i].name
-		reportArray[i] = serverData.body[i].reports
 	}
 }
 

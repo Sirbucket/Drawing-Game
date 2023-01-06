@@ -63,9 +63,12 @@ function makeNewDrawingCanvas(w, h, color, bgcolor) {
 
 export async function getServerData() {
 	try {
-		let json = await fetch(`./.netlify/functions/getImages`)
-		console.log(json);
-		return json
+		let response = await fetch(`./.netlify/functions/getImages`)
+		let json = response.json()
+		let gettingthere = JSON.stringify(json)
+		let data = JSON.parse(gettingthere)
+		console.log(data);
+		return data
 	} catch (err) {
 		console.log(`${err}`);
 		return;
