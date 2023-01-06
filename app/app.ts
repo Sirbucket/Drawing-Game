@@ -191,30 +191,6 @@ function createGuessingGame(element) {
 	}
 }
 
-function createWordDisplay(element) {
-	const wordList = []
-	const extraButtons = []
-	const dbuttonList = []
-	const wordContainer = []
-	for (let i = 0; i < containerList.length - 1; ++i) {
-		element.removeChild(containerList[i].cloneContent);
-	}
-
-	utils.newButton("Back", extraButtons).onClick(() => {
-		returnToMainPage(element, false, wordList, dbuttonList)
-	});
-	utils.newContainer(extraButtons, dbuttonList)
-	
-	for (let i = 0; i < dbuttonList.length - 1; ++i) {
-		element.appendChild(dbuttonList[i].cloneContent)
-	}
-	
-	for (let i = 0; i < wordArray.length - 1; ++i) {
-		utils.newElement("displayElement", wordArray[i], wordList)
-	}
-	
-	utils.newContainer(wordList, wordContainer)
-}
 function mainPageButtons(element) {
 	utils.newButton("Draw", buttonList).onClick(() => {
 		for (let i = 0; i < containerList.length; ++i) {
@@ -230,9 +206,6 @@ function mainPageButtons(element) {
 
 	utils.newButton("Add words", buttonList).onClick(() => {
 		createGuessingGame(element)
-	});
-	utils.newButton("Show words", buttonList).onClick(() => {
-		createWordDisplay(element)
 	});
 	utils.newContainer(buttonList, containerList);
 }
