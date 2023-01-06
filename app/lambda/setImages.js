@@ -12,7 +12,6 @@ export const handler = function(event, context, callback) { //Stuff is not sendi
         headers: {'cache-control': 'no-cache', 'x-apikey': key, 'content-type': 'application/json'}, //Create json
         body: {
             name: name, //Name of image
-            reports: reports //Sends in reports
         },
         json: true
     };
