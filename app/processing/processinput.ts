@@ -14,8 +14,8 @@ export async function pushServerToClient() {
 	for (let i = wordArray.length - 1; i >= 0; --i) {
 		wordArray[i].pop()
 	}
-	for (let i = serverData.body.length - 1; i >= 0; --i) {
-		wordArray[i] = serverData.body[i].name
+	for (let i = serverData.length - 1; i >= 0; --i) {
+		wordArray[i] = serverData[i].name
 	}
 }
 
