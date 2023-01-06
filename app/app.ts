@@ -76,7 +76,7 @@ export async function getServerData() {
 }
 export async function setServerData(name, reports) {
 	try {
-		var response = await fetch(`./.netlify/functions/setImages?name=${name}&reports=${reports}`)
+		var response = await fetch(`./.netlify/functions/setImages?name=${name}`)
 		return response
 	} catch (err) {
 		console.log(`${err}`);
