@@ -164,7 +164,7 @@ function createGuessingGame(element) {
 	const typeBoxes = [];
 	const dbuttonList = [];
 
-	for (let i = 0; i < containerList.length; ++i) {
+	for (let i = 0; i < containerList.length - 1; ++i) {
 		element.removeChild(containerList[i].cloneContent);
 	}
 
