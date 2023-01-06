@@ -193,7 +193,7 @@ function createGuessingGame(element) {
 
 function mainPageButtons(element) {
 	utils.newButton("Draw", buttonList).onClick(() => {
-		for (let i = 0; i < containerList.length; ++i) {
+		for (let i = 0; i < containerList.length - 1; ++i) {
 			element.removeChild(containerList[i].cloneContent);
 		}
 
