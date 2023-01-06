@@ -22,7 +22,7 @@ export const handler = function(event, context, callback) { //Stuff is not sendi
 
         callback(null, {
             statuscode: 200, 
-            body: JSON.stringify(body)
+            body: body
         });
     }
 

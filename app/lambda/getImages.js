@@ -9,7 +9,7 @@ export const handler = function(event, context, callback) {
     };
 
     const cb = function(err, response, body) {
-        callback(null, {statuscode: 200, body: JSON.stringify(body)});
+        callback(null, {statuscode: 200, body: body});
     }
 
     request(options, cb)
