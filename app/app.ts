@@ -204,7 +204,7 @@ function mainPageButtons(element) {
 		element.appendChild(canvas.element);
 	});
 
-	utils.newButton("Add words", buttonList).onClick(() => {
+	utils.newButton("Add Words", buttonList).onClick(() => {
 		createGuessingGame(element)
 	});
 	utils.newContainer(buttonList, containerList);
