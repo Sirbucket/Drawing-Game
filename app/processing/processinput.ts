@@ -11,7 +11,11 @@ export async function pushServerToClient() {
 		return
 	}
 
-	for (let i = 0; serverData.body.length - 1; ++i) {
+	for (let i = wordArray.length - 1; i >= 0; --i) {
+		wordArray[i].pop()
+		reportArray[i].pop()
+	}
+	for (let i = serverData.body.length - 1; i >= 0; --i) {
 		wordArray[i] = serverData.body[i].name
 		reportArray[i] = serverData.body[i].reports
 	}

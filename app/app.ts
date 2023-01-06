@@ -176,6 +176,7 @@ function createGuessingGame(element) {
 		if (filteredInput == false) return console.log("This word doesn't work");
 		let response = await testSendData(filteredInput, 0)
 		console.log(response)
+		pushServerToClient()
 	});
 	utils.newContainer(extraButtons, dbuttonList);
 	for (let i = 0; i < dbuttonList.length; ++i) {
@@ -199,7 +200,7 @@ function mainPageButtons(element) {
 		element.appendChild(canvas.element);
 	});
 
-	utils.newButton("Guess", buttonList).onClick(() => {
+	utils.newButton("Add words", buttonList).onClick(() => {
 		createGuessingGame(element)
 	});
 	utils.newButton("Show words", buttonList).onClick(() => {
