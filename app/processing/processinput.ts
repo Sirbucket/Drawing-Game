@@ -11,10 +11,10 @@ export async function pushServerToClient() {
 		return
 	}
 
-	for (let i = wordArray.length - 1; i >= 0; --i) {
-		wordArray[i].pop()
+	for (let i = 0; i < serverData.length - 1; ++i) {
+		wordArray[i] = null
 	}
-	for (let i = serverData.length - 1; i >= 0; --i) {
+	for (let i = 0; i < serverData.length - 1; ++i) {
 		wordArray[i] = serverData[i].name
 	}
 }

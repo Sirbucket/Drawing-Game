@@ -66,7 +66,7 @@ export async function getServerData() {
 		let response = await fetch(`./.netlify/functions/getImages`)
 		let json = response.json()
 		let gettingthere = JSON.stringify(json)
-		let data = JSON.parse(gettingthere)
+		let data = JSON.parse(gettingthere) //Why can't it just default to returning parsed json :(
 		console.log(data);
 		return data
 	} catch (err) {
