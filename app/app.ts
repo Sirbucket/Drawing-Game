@@ -64,9 +64,9 @@ function makeNewDrawingCanvas(w, h, color, bgcolor) {
 export async function getServerData() {
 	try {
 		let response = await fetch(`./.netlify/functions/getImages`)
-		let json = response.json()
-		let gettingthere = JSON.stringify(json)
-		let data = JSON.parse(gettingthere) //Why can't it just default to returning parsed json :(
+		let json = await response.json()
+		let gettingthere = await JSON.stringify(json)
+		let data = await JSON.parse(gettingthere) //Why can't it just default to returning parsed json :(
 		console.log(data);
 		return data
 	} catch (err) {
