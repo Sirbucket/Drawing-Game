@@ -10,7 +10,7 @@ let fm = false;
 const utils = new Utils();
 
 function setupMainPage() {
-	for (let i = 0; i < containerList.length; ++i) {
+	for (let i = 0; i < containerList.length - 1; ++i) {
 		app.appendChild(containerList[i].cloneContent);
 	}
 }
@@ -18,7 +18,7 @@ function setupMainPage() {
 function returnToMainPage(element, canvas?, wordList?, dbuttonList?) {
 	if (canvas) element.removeChild(canvas.element);
 	if (wordList) {
-		for (let i = 0; i < wordList.length; ++i) {
+		for (let i = 0; i < wordList.length - 1; ++i) {
 			element.removeChild(wordList[i].element);
 		}
 	}
@@ -26,7 +26,7 @@ function returnToMainPage(element, canvas?, wordList?, dbuttonList?) {
 	setupMainPage();
 
 	if (dbuttonList) {
-		for (let i = 0; i < dbuttonList.length; ++i) {
+		for (let i = 0; i < dbuttonList.length - 1; ++i) {
 			element.removeChild(dbuttonList[i].cloneContent);
 		}
 	}
@@ -97,18 +97,18 @@ function setupDrawingButtons(canvas, ctx, element) {
 	const wordList = [];
 	const dbuttonList = [];
 
-	for (let i = 0; i < caps.length; ++i) {
+	for (let i = 0; i < caps.length - 1; ++i) {
 		utils.newButton(caps[i], capButtons).onClick(() => ctx.lineCap = caps[i]);
 	}
 
-	for (let i = 0; i < colors.length; ++i) {
+	for (let i = 0; i < colors.length - 1; ++i) {
 		utils.newButton(colors[i], colorButtons).onClick(() => {
 			ctx.strokeStyle = colors[i];
 			ctx.fillStyle = colors[i];
 		});
 	}
 
-	for (let i = 0; i < connections.length; ++i) {
+	for (let i = 0; i < connections.length - 1; ++i) {
 		utils.newButton(connections[i], connectButtons).onClick(() => ctx.lineJoin = connections[i]);
 	}
 
@@ -128,7 +128,7 @@ function setupDrawingButtons(canvas, ctx, element) {
 		ctx.clearRect(0, 0, canvas.canvas.width, canvas.canvas.height);
 	});
 
-	let word = wordArray[~~(Math.random() * wordArray.length)]
+	let word = wordArray[~~(Math.random() * (wordArray.length - 1))]
 
 	utils.newButton("Save", extraButtons).onClick(() => {
 		const image = canvas.canvas.toDataURL("image/png")
@@ -150,11 +150,11 @@ function setupDrawingButtons(canvas, ctx, element) {
 
 	utils.newElement("namedisplay", word, wordList);
 
-	for (let i = 0; i < wordList.length; ++i) {
+	for (let i = 0; i < wordList.length - 1; ++i) {
 		element.appendChild(wordList[i].element);
 	}
 
-	for (let i = 0; i < dbuttonList.length; ++i) {
+	for (let i = 0; i < dbuttonList.length - 1; ++i) {
 		element.appendChild(dbuttonList[i].cloneContent);
 	}
 }
@@ -180,16 +180,43 @@ function createGuessingGame(element) {
 		let response = await testSendData(filteredInput, 0)
 		console.log(response)
 		pushServerToClient()
+		returnToMainPage(element, false, typeBoxes, dbuttonList)
 	});
 	utils.newContainer(extraButtons, dbuttonList);
-	for (let i = 0; i < dbuttonList.length; ++i) {
+	for (let i = 0; i < dbuttonList.length - 1; ++i) {
 		element.appendChild(dbuttonList[i].cloneContent);
 	}
-	for (let i = 0; i < typeBoxes.length; ++i) {
+	for (let i = 0; i < typeBoxes.length - 1; ++i) {
 		element.appendChild(typeBoxes[i].element)
 	}
 }
 
+function createWordDisplay(element) {
+	const wordList = []
+	const extraButtons = []
+	const dbuttonList = []
+	
+	for (let i = 0; i < containerList.length; ++i) {
+		element.removeChild(containerList[i].cloneContent);
+	}
+
+	utils.newButton("Back", extraButtons).onClick(() => {
+		returnToMainPage(element, false, wordList, dbuttonList)
+	});
+	utils.newContainer(extraButtons, dbuttonList)
+	
+	for (let i = 0; i < dbuttonList.length - 1; ++i) {
+		element.appendChild(dbuttonList[i].cloneContent)
+	}
+	
+	for (let i = 0; i < wordArray.length - 1; ++i) {
+		utils.newElement("displayElement", wordArray[i], wordList)
+	}
+
+	for (let i = 0; i < wordList.length - 1; ++i) {
+		element.appendChild(wordList[i].element);
+	}
+}
 function mainPageButtons(element) {
 	utils.newButton("Draw", buttonList).onClick(() => {
 		for (let i = 0; i < containerList.length; ++i) {
@@ -207,7 +234,7 @@ function mainPageButtons(element) {
 		createGuessingGame(element)
 	});
 	utils.newButton("Show words", buttonList).onClick(() => {
-		
+		createWordDisplay(element)
 	});
 	utils.newContainer(buttonList, containerList);
 }

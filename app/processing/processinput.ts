@@ -17,6 +17,7 @@ export async function pushServerToClient() {
 	for (let i = 0; i < serverData.length - 1; ++i) {
 		wordArray[i] = serverData[i].name
 	}
+	wordArray.sort()
 }
 
 //Filter isn't working so I'm just going to leave this for now :(
